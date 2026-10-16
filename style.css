@@ -334,8 +334,8 @@ body.ready .hero__logo svg{opacity:1;transform:none;filter:none}
 }
 
 @media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation:none!important;transition:none!important}
-  [data-r],[data-split] .ch{opacity:1!important;transform:none!important}
-  .hero__ph{clip-path:none!important}.hero__logo svg{opacity:1!important;transform:none!important;filter:none!important}
-  .loader{display:none}
+  /* mantém o motion suave; só remove o que pisca ou treme */
+  .hero__whisper span{animation:none;opacity:.9}
+  .grain{animation:none}
+  .dot{animation:none}
 }

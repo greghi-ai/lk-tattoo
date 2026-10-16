@@ -12,8 +12,7 @@
     document.body.classList.remove('is-loading');
     requestAnimationFrame(() => document.body.classList.add('ready'));
   };
-  if (reduce) start();
-  else window.addEventListener('load', () => setTimeout(start, 1700));
+  window.addEventListener('load', () => setTimeout(start, 1700));
   setTimeout(start, 4000); // garantia
 
   /* ---------- split de títulos em letras ---------- */
@@ -114,15 +113,15 @@
         el.style.translate = `0 ${(-c * +el.dataset.speed).toFixed(1)}px`;
       });
       if (marquee) marquee.style.transform = `translateX(${(-prog(videos) * 40).toFixed(2)}%)`;
-      cx += (mx - cx) * 0.18; cy += (my - cy) * 0.18;
-      cur.style.transform = `translate(${cx}px, ${cy}px)`;
     }
+    cx += (mx - cx) * 0.18; cy += (my - cy) * 0.18;
+    cur.style.transform = `translate(${cx}px, ${cy}px)`;
 
     // linha do processo acende conforme rola
     const r = process.getBoundingClientRect();
     const p = Math.min(1, Math.max(0, (innerHeight * 0.75 - (r.top + 300)) / (r.height * 0.55)));
     process.style.setProperty('--p', p.toFixed(3));
-    steps.forEach((s, i) => s.classList.toggle('is-lit', p >= i / steps.length + 0.02 || (reduce && true)));
+    steps.forEach((s, i) => s.classList.toggle('is-lit', p >= i / steps.length + 0.02));
 
     requestAnimationFrame(frame);
   }
@@ -144,7 +143,7 @@
     dots.forEach((d, i) => d.classList.toggle('is-on', i === qi));
     num.textContent = String(qi + 1).padStart(2, '0');
   };
-  const auto = () => { clearInterval(qTimer); if (!reduce) qTimer = setInterval(() => show(qi + 1), 6500); };
+  const auto = () => { clearInterval(qTimer); qTimer = setInterval(() => show(qi + 1), 6500); };
   $$('[data-q]').forEach(b => b.addEventListener('click', () => { show(qi + +b.dataset.q); auto(); }));
   dots.forEach((d, i) => d.addEventListener('click', () => { show(i); auto(); }));
   auto();
