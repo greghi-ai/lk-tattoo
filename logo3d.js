@@ -59,32 +59,59 @@
     if (key === lastKey) return;
     lastKey = key;
     const fw = CW / (1 + PAD * 2), fh = CH / (1 + PAD * 2);
-    const sx = Math.cos(rad(ry)), sy = Math.cos(rad(rx));        // encurtamento do giro
+    const c = Math.cos(rad(ry)), sy = Math.cos(rad(rx));
+    const s = c < 0 ? -1 : 1;                                       // de costas: espelha (vê o verso da logo)
     const depth = fw * 0.13;
-    const vx = -Math.sin(rad(ry)) * depth, vy = Math.sin(rad(rx)) * depth;  // direção da extrusão
+    // extrusão vai da face visível para a face escondida
+    const vx = -s * Math.sin(rad(ry)) * depth, vy = Math.sin(rad(rx)) * depth;
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.clearRect(0, 0, CW, CH);
     ctx.translate(CW / 2, CH / 2);
     ctx.rotate(rad(rz));
-    const w = fw * sx, h = fh * sy;
+    const w = fw * Math.max(Math.abs(c), 0.02), h = fh * sy;
+    ctx.scale(s, 1);
+    const ox = vx * s;                                              // deslocamento no espaço espelhado
     const steps = clamp(Math.ceil(Math.hypot(vx, vy) / (2.2 * DPR)), 6, 16);   // camadas suficientes para não ter frestas
     for (let i = steps; i >= 1; i--) {
       const t = i / steps;
       const img = IM[Math.min(3, Math.floor((1 - t) * 4))];
-      ctx.drawImage(img, -w / 2 + vx * t, -h / 2 + vy * t, w, h);
+      ctx.drawImage(img, -w / 2 + ox * t, -h / 2 + vy * t, w, h);
     }
-    ctx.drawImage(IM[4], -w / 2 + vx * 0.02, -h / 2 + vy * 0.02, w, h);  // bisel
-    const face = faceWithSheen(Math.round(fw), Math.round(fh), Math.round((0.5 + ry / 70) * 20) / 20);
+    ctx.drawImage(IM[4], -w / 2 + ox * 0.02, -h / 2 + vy * 0.02, w, h);  // bisel
+    const ryN = ((ry % 360) + 540) % 360 - 180;                     // -180..180 para o brilho
+    const face = faceWithSheen(Math.round(fw), Math.round(fh), Math.round((0.5 + s * Math.sin(rad(ryN)) * 0.5) * 20) / 20);
     ctx.drawImage(face, -w / 2, -h / 2, w, h);
   }
 
   let last = scrollY, vel = 0, t0 = performance.now(), lastTf = '', lastOp = '';
   let mx = 0, my = 0, tmx = 0, tmy = 0;
   const sp = { x: 0, v: 0 };
+  // giro de 360° quando o mouse passa sobre a logo
+  let spinT = -1, inside = false;
+  const SPIN_MS = 1500;
+  const ease = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+  const cursorEl = document.querySelector('.cursor');
+  const overLogo = (x, y) => {
+    const r = wrap.getBoundingClientRect();
+    if (!r.width || +wrap.style.opacity < 0.3) return false;
+    const nx = (x - (r.left + r.width / 2)) / (r.width * 0.55);
+    const ny = (y - (r.top + r.height / 2)) / (r.height * 0.55);
+    return nx * nx + ny * ny < 1;
+  };
+  const spin = () => { if (spinT < 0) spinT = performance.now(); };
   addEventListener('mousemove', e => {
     tmx = (e.clientX / innerWidth) * 2 - 1;
     tmy = (e.clientY / innerHeight) * 2 - 1;
+    const now = overLogo(e.clientX, e.clientY);
+    if (now && !inside) spin();
+    if (now !== inside && cursorEl) cursorEl.classList.toggle('is-hover', now);
+    inside = now;
   }, { passive: true });
+  // celular: tocar na logo
+  document.addEventListener('click', e => {
+    if (e.target.closest('a,button,input,textarea,label,select')) return;
+    if (overLogo(e.clientX, e.clientY)) spin();
+  });
 
   function loop(now) {
     const t = (now - t0) / 1000;
@@ -107,7 +134,12 @@
     if (op !== lastOp) { wrap.style.opacity = op; lastOp = op; }
 
     // giro: o scroll gira a logo, o mouse inclina
-    const ry = Math.sin(y / 420) * 34 + mx * 14 + clamp(vel * 0.25, -10, 10);
+    let extra = 0;
+    if (spinT >= 0) {
+      const k = (now - spinT) / SPIN_MS;
+      if (k >= 1) spinT = -1; else { extra = 360 * ease(k); sp.v += 0.004 * Math.sin(k * Math.PI); }  // dá um "puff" no meio do giro
+    }
+    const ry = Math.sin(y / 420) * 34 + mx * 14 + clamp(vel * 0.25, -10, 10) + extra;
     const rx = -my * 9 + Math.sin(t * 0.7) * 2.5;
     const rz = Math.sin(y / 900) * 3;
     draw(ry, rx, rz);
