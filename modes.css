@@ -25,42 +25,28 @@ html.mode-pb .progress,html.mode-pb .cursor,html.mode-pb .loader{filter:grayscal
 html.mode-pb .logo3d{filter:grayscale(1) contrast(1.15) brightness(1.25)}
 
 /* =========================================================
-   COLORIDO — gradientes de cor em movimento
+   COLORIDO — só o fundo ganha cor (fontes, fotos e logo ficam originais)
    ========================================================= */
 @keyframes lkflow{to{background-position:300% 0}}
-@keyframes lkhue{to{filter:hue-rotate(360deg) saturate(1.4)}}
-html.mode-color{--grad:linear-gradient(90deg,#ff2d55,#ff9f0a,#ffd60a,#30d158,#0a84ff,#bf5af2,#ff2d55)}
-
-/* logo 3D e brilhos passeiam pelas cores */
-html.mode-color .logo3d__cv{animation:lkhue 9s linear infinite}
-html.mode-color .logo3d__glow,html.mode-color .glow,html.mode-color .fire{animation:lkhue 9s linear infinite!important}
-
-/* títulos grandes com gradiente correndo dentro das letras */
-html.mode-color :is(.giant,.bebas-xl,.budget__title,.sobre__tag strong,.step h3,.quotes__n){
-  background:var(--grad) 0 0/300% 100%;-webkit-background-clip:text;background-clip:text;
-  color:transparent;-webkit-text-fill-color:transparent;animation:lkflow 8s linear infinite}
-html.mode-color :is(.giant,.bebas-xl,.budget__title) :is(em,.ch){color:transparent;-webkit-text-fill-color:transparent}
-
-/* botões, selo, pontos e traços */
-html.mode-color :is(.btn--red,.filters button.is-on,.sizes input:checked+i,.submit,.seal,.social a,.progress,.tick,.steps__line i,.quotes__dots i.is-on,.pill--red){
-  background:var(--grad) 0 0/300% 100%!important;border-color:transparent!important;animation:lkflow 6s linear infinite}
-html.mode-color .seal svg{animation:spin 18s linear infinite}
-html.mode-color :is(.dot,.step.is-lit b){background:#ffd60a;box-shadow:0 0 14px #ff2d55}
-html.mode-color :is(.step em,.label::first-letter){color:#ff9f0a}
-html.mode-color .cursor span{background:#0a84ff}
-
-/* fotos ganham tons de cor (cada uma um tom) */
-html.mode-color .ph__img{filter:sepia(.9) saturate(3.2) hue-rotate(var(--hue,300deg)) brightness(.85)!important}
-html.mode-color .grid .work:nth-child(6n+1){--hue:300deg}
-html.mode-color .grid .work:nth-child(6n+2){--hue:200deg}
-html.mode-color .grid .work:nth-child(6n+3){--hue:20deg}
-html.mode-color .grid .work:nth-child(6n+4){--hue:120deg}
-html.mode-color .grid .work:nth-child(6n+5){--hue:250deg}
-html.mode-color .grid .work:nth-child(6n+6){--hue:340deg}
-html.mode-color .step:nth-child(odd) .step__ph{--hue:180deg}
-html.mode-color .step:nth-child(even) .step__ph{--hue:280deg}
-html.mode-color .sobre__ph2{--hue:30deg}
-html.mode-color .thumb:nth-child(odd){--hue:150deg}
+@keyframes lkdrift{
+  0%{transform:translate3d(-6%,-4%,0) rotate(0deg) scale(1)}
+  50%{transform:translate3d(5%,3%,0) rotate(180deg) scale(1.12)}
+  100%{transform:translate3d(-6%,-4%,0) rotate(360deg) scale(1)}}
+.bgmesh{position:fixed;inset:-35%;z-index:0;pointer-events:none;opacity:0;transition:opacity .9s ease;will-change:transform;
+  background:
+    radial-gradient(38% 34% at 22% 28%,rgba(255,45,85,.75),transparent 70%),
+    radial-gradient(34% 32% at 78% 24%,rgba(10,132,255,.7),transparent 70%),
+    radial-gradient(40% 36% at 70% 76%,rgba(191,90,242,.7),transparent 70%),
+    radial-gradient(36% 34% at 26% 78%,rgba(255,159,10,.62),transparent 70%),
+    radial-gradient(30% 28% at 50% 50%,rgba(48,209,88,.4),transparent 70%)}
+html.mode-color .bgmesh{opacity:1;animation:lkdrift 26s linear infinite}
+/* véu escuro por cima das cores para os textos continuarem legíveis */
+.bgveil{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0;transition:opacity .9s ease;
+  background:radial-gradient(ellipse at 50% 40%,rgba(8,8,8,.12),rgba(8,8,8,.5))}
+html.mode-color .bgveil{opacity:1}
+html.mode-color,html.mode-color body{background:#080808}
+/* os brilhos vermelhos saem: o fundo colorido toma o lugar deles */
+html.mode-color :is(.glow,.fire,.logo3d__glow){opacity:0!important;transition:opacity .6s}
 
 /* ---------- celular: botões compactos no topo ---------- */
 @media (max-width:760px){
@@ -70,5 +56,5 @@ html.mode-color .thumb:nth-child(odd){--hue:150deg}
   .nav__pills .s{display:inline}
 }
 @media (prefers-reduced-motion:reduce){
-  html.mode-color *{animation-duration:30s!important}
+  html.mode-color .bgmesh{animation-duration:80s}
 }
