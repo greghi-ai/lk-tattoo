@@ -1,0 +1,67 @@
+/* =========================================================
+   LK — celular (principal). Carrega por último.
+   ========================================================= */
+@media (max-width:760px){
+
+  /* ---------- topo e navegação ---------- */
+  .hero{min-height:100svh;height:100svh}
+  .hero__nav,.hero__whisper{display:none}
+  .hero__l,.hero__r{bottom:96px}
+  .hero__scroll{bottom:40px}
+  .logo3d{width:68vw}
+
+  /* ---------- redes: um botão de WhatsApp flutuante no canto, sem cobrir texto ---------- */
+  .social{left:auto;right:16px;top:auto;bottom:calc(16px + env(safe-area-inset-bottom));transform:none!important;
+    background:none;flex-direction:row;width:auto;gap:0;z-index:55}
+  .social a:first-child{display:none}
+  .social a{width:52px;height:52px;padding:0;border-radius:50%;background:var(--verm);display:grid;place-items:center;
+    font-size:12px;box-shadow:0 8px 24px rgba(0,0,0,.55)}
+
+  /* ---------- nada estoura a largura ---------- */
+  /* brilhos: gradiente suave em vez de desfoque (sem borda dura e bem mais leve no celular) */
+  .glow{filter:none!important;animation:none!important;opacity:1!important;left:-30vw!important;right:auto!important;width:160vw!important;height:120vw!important;
+    background:radial-gradient(closest-side,rgba(158,16,21,.22),rgba(158,16,21,.07) 55%,transparent)!important}
+  .glow--r,.glow--works,.glow--q{left:auto!important;right:-30vw!important}
+  .fire{inset:auto 0 0 0!important;height:60%!important}
+  .fire i{filter:none!important;animation:none!important;inset:0!important;width:auto!important;height:auto!important;border-radius:0!important;
+    background:radial-gradient(ellipse 80% 70% at 50% 100%,rgba(210,31,38,.28),transparent 70%)!important;opacity:1!important}
+  .fire i+i{display:none}
+  .budget__follow{display:none}
+  .logo3d__glow{animation:none}
+  .marquee{display:none}
+  .bebas-xl{font-size:17vw;line-height:.9}
+  .giant{font-size:31vw}
+  .giant--md{font-size:15vw;line-height:1}
+  .sobre__tag strong{font-size:52px}
+  .works__head{gap:14px}
+  .budget__title{font-size:13vw}
+
+  /* ---------- seções mais respiradas ---------- */
+  .sobre__ph1{height:360px}
+  .seal{margin-top:-56px}
+  .work.h-l,.work.h-m,.work.h-s{height:420px}
+  .grid{columns:1}
+  .videos{padding-top:100px}
+  .videos__side{margin-top:20px}
+  .videos__stat{margin-top:10px}
+  .quotes__stage{min-height:300px}
+  .quote p{font-size:24px}
+  .budget__aside,.budget__agenda{font-size:12px}
+  .foot{padding-bottom:90px}            /* espaço para o botão do WhatsApp */
+  .steps__line,.step b{display:none}
+  .step__ph{margin-bottom:12px}
+
+  /* sem cursor customizado no toque */
+  .cursor{display:none!important}
+}
+
+/* ---------- animações de scroll no celular: só sobe e aparece, sem lateral ---------- */
+@media (max-width:760px){
+  @supports (animation-timeline: view()){
+    .from-l,.from-r,.from-b,.zoom,.step,.player{
+      animation:mIn linear both!important;animation-timeline:view()!important;animation-range:entry 0% entry 70%!important}
+    .bebas-xl,.giant,.giant--md,.tape,.hero__l,.hero__r,.hero__sub{animation:none!important;transform:none!important}
+    .budget__title{animation:mIn linear both!important;animation-timeline:view()!important;animation-range:entry 0% entry 80%!important}
+    @keyframes mIn{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:none}}
+  }
+}

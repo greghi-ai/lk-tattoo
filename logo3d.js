@@ -6,6 +6,9 @@
   const B = document.body;
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
   const rad = d => d * Math.PI / 180;
+  const MOB = matchMedia('(max-width:760px)').matches || matchMedia('(hover: none)').matches;
+  // altura estável: no celular a barra do navegador muda innerHeight ao rolar — isso fazia a logo pular
+  let VH = innerHeight, VW = innerWidth;
 
   const wrap = document.createElement('div');
   wrap.className = 'logo3d';
@@ -24,12 +27,15 @@
   const PAD = 0.22;                       // margem do canvas para o volume/giro não cortar
   let CW = 0, CH = 0, DPR = 1;
   function size() {
-    DPR = Math.min(devicePixelRatio || 1, 1.25);
+    DPR = Math.min(devicePixelRatio || 1, MOB ? 1 : 1.25);
     const w = wrap.offsetWidth, h = wrap.offsetHeight;   // tamanho de layout (sem o scale)
     CW = Math.round(w * (1 + PAD * 2) * DPR); CH = Math.round(h * (1 + PAD * 2) * DPR);
     cv.width = CW; cv.height = CH; lastKey = '';
   }
-  addEventListener('resize', size);
+  addEventListener('resize', () => {
+    if (Math.abs(innerWidth - VW) < 2 && MOB) return;   // só a barra do navegador mexeu: ignora
+    VW = innerWidth; VH = innerHeight; size();
+  });
 
   // face com brilho (offscreen, refeita só quando o brilho anda)
   const off = document.createElement('canvas'), octx = off.getContext('2d');
@@ -54,7 +60,7 @@
   let lastKey = '';
   function draw(ry, rx, rz) {
     if (!IM || !CW) return;
-    const q = v => Math.round(v * 2) / 2;                       // redesenha a cada meio grau
+    const q = v => MOB ? Math.round(v) : Math.round(v * 2) / 2;  // redesenha a cada meio grau (1° no celular)
     const key = q(ry) + '|' + q(rx) + '|' + q(rz);
     if (key === lastKey) return;
     lastKey = key;
@@ -101,7 +107,7 @@
   const spin = () => { if (spinT < 0) spinT = performance.now(); };
   addEventListener('mousemove', e => {
     tmx = (e.clientX / innerWidth) * 2 - 1;
-    tmy = (e.clientY / innerHeight) * 2 - 1;
+    tmy = (e.clientY / VH) * 2 - 1;
     const now = overLogo(e.clientX, e.clientY);
     if (now && !inside) spin();
     if (now !== inside && cursorEl) cursorEl.classList.toggle('is-hover', now);
@@ -117,20 +123,20 @@
     const t = (now - t0) / 1000;
     const y = scrollY, dy = y - last; last = y;
     vel += (dy - vel) * 0.15;
-    const max = Math.max(1, document.documentElement.scrollHeight - innerHeight);
+    const max = Math.max(1, document.documentElement.scrollHeight - VH);
     const p = clamp(y / max, 0, 1);
     mx += (tmx - mx) * 0.06; my += (tmy - my) * 0.06;
 
     // tamanho: cresce até o fim da página e respira como inflável
     const ready = B.classList.contains('ready') ? 1 : 0;
-    const target = ((0.78 + p * 0.9) * (1 + 0.05 * Math.sin(y / 180) + 0.012 * Math.sin(t * 1.6))) * ready;
+    const target = ((MOB ? 0.92 + p * 0.25 : 0.78 + p * 0.9) * (1 + 0.05 * Math.sin(y / 180) + 0.012 * Math.sin(t * 1.6))) * ready;
     sp.v += (target - sp.x) * 0.08; sp.v *= 0.84; sp.x += sp.v;
 
     // posição: desce acompanhando
-    const ty = (-0.06 + p * 0.28) * innerHeight + Math.sin(t * 0.9) * 6;
+    const ty = (MOB ? -0.08 + p * 0.12 : -0.06 + p * 0.28) * VH + Math.sin(t * 0.9) * 6;
     const tf = `translate3d(-50%,calc(-50% + ${ty.toFixed(0)}px),0) scale(${sp.x.toFixed(3)})`;
     if (tf !== lastTf) { wrap.style.transform = tf; lastTf = tf; }
-    const op = (ready ? clamp(1 - (y / innerHeight) * 0.6, 0.42, 1) : 0).toFixed(2);
+    const op = (ready ? clamp(1 - (y / VH) * (MOB ? 0.9 : 0.6), MOB ? 0.16 : 0.42, 1) : 0).toFixed(2);
     if (op !== lastOp) { wrap.style.opacity = op; lastOp = op; }
 
     // giro: o scroll gira a logo, o mouse inclina
@@ -139,8 +145,8 @@
       const k = (now - spinT) / SPIN_MS;
       if (k >= 1) spinT = -1; else { extra = 360 * ease(k); sp.v += 0.004 * Math.sin(k * Math.PI); }  // dá um "puff" no meio do giro
     }
-    const ry = Math.sin(y / 420) * 34 + mx * 14 + clamp(vel * 0.25, -10, 10) + extra;
-    const rx = -my * 9 + Math.sin(t * 0.7) * 2.5;
+    const ry = Math.sin(y / 420) * (MOB ? 26 : 34) + (MOB ? 0 : mx * 14 + clamp(vel * 0.25, -10, 10)) + extra;
+    const rx = MOB ? 0 : -my * 9 + Math.sin(t * 0.7) * 2.5;
     const rz = Math.sin(y / 900) * 3;
     draw(ry, rx, rz);
 
