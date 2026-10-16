@@ -13,9 +13,12 @@ linha do processo que acende conforme rola, carrossel de depoimentos e hover nos
 Respeita `prefers-reduced-motion`.
 
 ## Terror
-Caveira original (flash de tattoo) que infla e murcha com o scroll como boneco inflável, abre a boca na rolagem rápida,
-segue o mouse com os olhos e range os dentes no hover (clique = grito). Lâmpada falhando, scanlines, vinheta,
-tinta borrada nos títulos, glitch, sangue escorrendo e fitas de aviso. Arquivos: `horror.css` e `skull.js`.
+Fundo: caveira 3D em vídeo (`assets/skull.mp4` / `.webm`) desenhada num canvas — desce e cresce com o scroll,
+respira como inflável e entra em glitch pesado (canais deslocados, fatias, apagões, barras na tela) quando o
+cursor passa por cima. Surtos aleatórios, lâmpada falhando, scanlines. Arquivos: `video-skull.js`, `nueva.css`.
+
+> ⚠️ O vídeo da caveira é obra de terceiro (@iskxart). Antes de publicar no site oficial, obter autorização/licença
+> do artista ou trocar pelo vídeo próprio — basta substituir os arquivos em `assets/`.
 
 ## Para finalizar
 - **Fotos e vídeos:** os blocos `.ph` são placeholders com legenda `[ ... ]`. Trocar por `<img>`/`<video>` reais.

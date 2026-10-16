@@ -1,0 +1,123 @@
+/* =========================================================
+   LK — direção brutalista (vermelho sobre preto, linhas finas)
+   Carrega por último: sobrescreve style.css e horror.css
+   ========================================================= */
+:root{--line:rgba(210,31,38,.42)}
+
+/* ---------- caveira em vídeo (fundo) ---------- */
+main,.foot{position:relative;z-index:2}
+.vskull{position:fixed;left:50%;top:50%;z-index:0;width:min(96vh,100vw);aspect-ratio:1;pointer-events:none;
+  mix-blend-mode:screen;opacity:0;transition:opacity 1.6s;will-change:transform;
+  -webkit-mask:radial-gradient(circle at 50% 48%,#000 48%,transparent 70%);mask:radial-gradient(circle at 50% 48%,#000 48%,transparent 70%)}
+.vskull canvas{width:100%;height:100%;display:block}
+body.ready .vskull{opacity:.82}
+.vskull.is-glitch{opacity:1;transition:none}
+body.flicker .vskull{opacity:.15}
+
+/* ---------- moldura da página ---------- */
+.frame{position:fixed;inset:14px;z-index:60;pointer-events:none;border:1px solid var(--line)}
+.frame::before{content:"";position:absolute;left:0;right:0;top:64px;border-top:1px solid var(--line)}
+.frame i{position:absolute;color:var(--verm);font:300 14px/1 var(--inter)}
+.frame i:nth-child(1){left:-5px;top:-8px}.frame i:nth-child(2){right:-5px;top:-8px}
+.frame i:nth-child(3){left:-5px;bottom:-8px}.frame i:nth-child(4){right:-5px;bottom:-8px}
+
+/* ---------- nav ---------- */
+.nav{padding:28px calc(var(--pad) - 10px) 0;height:78px;align-items:center}
+.nav.is-scrolled{padding-top:28px;padding-bottom:0;background:linear-gradient(rgba(8,8,8,.92),rgba(8,8,8,.75));backdrop-filter:none}
+.nav__logo svg{color:var(--verm)}
+.nav__pills{display:none}
+.nav__links{gap:30px;align-items:center}
+.nav__links a{color:var(--verm);font:600 10px var(--inter);letter-spacing:.1em;text-transform:uppercase}
+.nav__links a.u{text-decoration:none;background:var(--verm);color:var(--preto);padding:11px 26px}
+.nav__links a.u:hover{background:var(--osso)}
+.social{top:auto;bottom:40px}
+
+/* ---------- tipografia: condensada, gigante, vermelha ---------- */
+.hero__title,.bebas-xl,.giant,.giant--md,.budget__title,.sobre__tag strong,.step h3,.work h3,.thumb h4,.marquee,.tape span{filter:none}
+.hero__title,.bebas-xl,.giant,.giant--md,.budget__title{font-family:var(--bebas);font-weight:400;color:var(--verm);
+  text-transform:uppercase;letter-spacing:0;line-height:.84}
+.giant{font-size:clamp(170px,26vw,390px);text-align:center;margin-top:190px}
+.giant em{color:var(--osso)}
+.giant em::after{display:none}
+.giant--md{font-size:clamp(80px,12.5vw,200px);margin-top:10px}
+.bebas-xl{font-size:clamp(120px,17vw,260px)}
+.budget__title{font-size:clamp(90px,12vw,190px);margin-top:40px}
+.budget__title em,.giant--md em{color:var(--osso)}
+.sobre__tag strong{color:var(--verm)}
+.work h3,.thumb h4{color:var(--verm)}
+.step h3{color:var(--osso)}
+.marquee{-webkit-text-stroke:1px rgba(210,31,38,.45)}
+
+/* rótulos técnicos */
+.label,.sobre__meta,.works__sel,.next .micro,.hero__scroll,.hero__city,.hero__l,.hero__r,.hero__whisper,.videos__side .micro{
+  color:var(--verm)!important;text-transform:uppercase;font-weight:600;letter-spacing:.1em;font-size:10px;font-style:normal}
+.hero__vert{color:var(--verm)}
+.tick{background:var(--verm)}
+
+/* ---------- linhas e caixas ---------- */
+main>section{border-bottom:1px solid var(--line)}
+.ph{--nevoa:#D21F26;border:1px solid var(--line);opacity:1;
+  background:linear-gradient(160deg,rgba(60,8,10,.55),rgba(8,8,8,.9) 60%)}
+.ph::after{background:linear-gradient(to top,rgba(8,8,8,.9) 0%,transparent 50%)}
+.form{background:rgba(8,8,8,.86);border:1px solid var(--line);box-shadow:none;backdrop-filter:none}
+.f>span{color:var(--verm);text-transform:uppercase;letter-spacing:.1em;font-size:10px;font-weight:600}
+.f input,.f textarea{border-bottom-color:var(--line)}
+.drop{border-color:var(--line)}
+.quotes__nav{border-left-color:var(--verm)}
+.steps__line{background:var(--line)}
+
+/* botões */
+.btn{background:transparent!important;border:1px solid var(--verm);color:var(--verm);box-shadow:none!important}
+.btn--red{background:var(--verm)!important;color:var(--preto)}
+.btn:hover{background:var(--osso)!important;color:var(--preto);border-color:var(--osso)}
+.filters button{border-radius:20px!important;border-color:var(--verm);color:var(--verm)}
+.filters button.is-on{background:var(--verm);color:var(--preto)}
+.sizes i{border-color:var(--line);color:var(--verm)}
+.sizes input:checked+i{color:var(--preto)}
+.submit{color:var(--preto)}
+.submit::before{background:var(--osso)}
+.ring{border-color:var(--verm);color:var(--verm)}
+
+/* ---------- faixas retas (palavras cheias e vazadas) ---------- */
+.tape,.tape--dark{transform:none;margin:0;padding:10px 0 6px;background:var(--preto);color:var(--verm);
+  border:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);box-shadow:none;position:relative;z-index:3}
+.tape span{font-size:clamp(54px,6.4vw,100px);letter-spacing:0;padding-right:0}
+.tape .o{color:transparent;-webkit-text-stroke:1px var(--verm)}
+.tape .d{display:inline-block;font-size:.4em;vertical-align:middle;margin:0 .5em;transform:rotate(45deg)}
+
+/* ---------- some o que tinha cara de ilustração ---------- */
+.drips,.seal,.hero__ph,.hero__logo,.glow--hero{display:none!important}
+.glow{opacity:.16!important}
+.fire i{opacity:.22!important}
+.sobre__ph1,.sobre__ph2{opacity:.9}
+
+/* ---------- hero ---------- */
+.hero__title{position:absolute;left:var(--pad);bottom:120px;z-index:3;font-size:clamp(110px,16vw,260px)}
+.hero__title em{color:var(--osso)}
+.hero__sub{position:absolute;right:var(--pad);bottom:140px;z-index:3;text-align:right;color:var(--osso);font:300 18px/1.35 var(--inter)}
+.hero__sub b{color:var(--verm);font-weight:400}
+.hero__nav{bottom:62px}
+.hero__nav::after{display:none}
+.plus{position:absolute;color:var(--verm);font:300 22px/1 var(--inter);z-index:3;pointer-events:none}
+
+/* glitch de texto mais seco */
+@keyframes glitch{
+  0%{transform:translate(0);text-shadow:none}
+  20%{transform:translate(-4px,0);text-shadow:6px 0 rgba(234,230,223,.5),-6px 0 #5a0006}
+  40%{transform:translate(4px,0) skewX(-8deg);text-shadow:-8px 0 rgba(234,230,223,.35)}
+  60%{transform:translate(-2px,0);clip-path:inset(30% 0 40% 0)}
+  80%{transform:translate(3px,0);clip-path:none;text-shadow:4px 0 #5a0006}
+  100%{transform:translate(0);text-shadow:none}}
+
+@media (max-width:760px){
+  .frame{inset:8px}.frame::before{top:56px}
+  .nav{height:64px;padding-top:20px}
+  .hero__title{bottom:170px;font-size:24vw}
+  .hero__sub{left:var(--pad);right:auto;text-align:left;bottom:110px;font-size:15px}
+  .giant{font-size:36vw;margin-top:30px}
+  .giant--md{font-size:19vw}
+  .vskull{width:120vw}
+  body.ready .vskull{opacity:.6}
+  .tape span{font-size:44px}
+}
+.tape b{font-weight:400}
