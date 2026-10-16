@@ -132,3 +132,59 @@ body.skull-glitch main{transform:none}
 .hero__whisper span{animation-duration:7s}
 /* fundo em preto puro para casar com o preto do vídeo (sem "quadrado") */
 html,body{background:#000}
+
+/* =========================================================
+   LEITURA — nada de vermelho sobre vermelho
+   vermelho vira acento; texto que passa por cima da caveira/fogo é osso
+   ========================================================= */
+.hero__title,.bebas-xl,.giant,.giant--md,.budget__title,.sobre__tag strong{color:var(--osso);
+  text-shadow:0 2px 0 #000,0 0 40px rgba(0,0,0,.85)}
+.hero__title em,.giant em,.giant--md em,.budget__title em{color:var(--verm);text-shadow:none}
+.work h3,.thumb h4,.step h3{color:var(--osso);text-shadow:0 1px 12px rgba(0,0,0,.9)}
+.label,.sobre__meta,.works__sel,.next .micro,.hero__scroll,.hero__l,.hero__r,.hero__whisper,.videos__side .micro,.f>span{
+  color:rgba(234,230,223,.78)!important}
+.label::first-letter{color:var(--verm)}
+.nav__links a{color:var(--osso)}
+.nav__links a:not(.u):hover{color:var(--verm)}
+.nav__links a.u{color:var(--preto)}
+.hero__sub{bottom:56px;font-size:16px}
+.hero__sub b{color:var(--verm)}
+.marquee{-webkit-text-stroke:1px rgba(234,230,223,.16)}
+.work small,.quote cite,.step p{color:rgba(234,230,223,.66)}
+.filters button{color:var(--osso);border-color:rgba(234,230,223,.3)}
+.filters button:hover{border-color:var(--verm)}
+.filters button.is-on{color:var(--preto);border-color:var(--verm)}
+.sizes i{color:var(--osso)}
+.btn{color:var(--osso);border-color:rgba(234,230,223,.4)}
+.btn--red{color:var(--preto)}
+.ring{color:var(--osso);border-color:rgba(234,230,223,.5)}
+.ring:hover{color:var(--preto)}
+/* caveira um pouco mais baixa para o texto respirar */
+body.ready .vskull{opacity:.66}
+
+/* =========================================================
+   FOTOS
+   ========================================================= */
+.ph__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;
+  transition:transform 1.2s var(--ease),filter .6s}
+.ph::before,.ph::after{z-index:1}
+.ph>h3,.ph>h4,.ph>small,.ph .work__go,.ph .player__btn,.ph .player__bar,.ph .player__time{position:relative;z-index:2}
+.ph .work__go,.ph .player__btn,.ph .player__bar,.ph .player__time{position:absolute}
+.ph:has(.ph__img){background:#000}
+.work:hover .ph__img,.thumb:hover .ph__img,.player:hover .ph__img{transform:scale(1.05)}
+.work .ph__img{filter:contrast(1.05) brightness(.82)}
+.work:hover .ph__img{filter:contrast(1.15) brightness(.7)}
+.player .ph__img{filter:brightness(.62)}
+.thumb .ph__img{filter:brightness(.55)}
+.sobre__ph1 .ph__img,.sobre__ph2 .ph__img{filter:brightness(.78)}
+/* processo: foto em cada etapa */
+.steps{margin-top:110px;align-items:start}
+.steps__line{top:calc(var(--ph-h) + 22px)}
+.step{--ph-h:230px}
+.steps{--ph-h:230px}
+.step__ph{height:var(--ph-h);margin-bottom:16px;border:1px solid var(--line)}
+.step__ph .ph__img{filter:grayscale(1) brightness(.6)}
+.step.is-lit .step__ph .ph__img{filter:brightness(.85)}
+.step__ph::after{background:linear-gradient(to top,rgba(0,0,0,.6),transparent 60%)}
+@media (max-width:1100px){.steps{--ph-h:200px}}
+@media (max-width:760px){.steps{--ph-h:260px}.step__ph{height:260px}}

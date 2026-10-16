@@ -41,14 +41,6 @@
   const scrolling = () => now() - lastScrollT < 220;
   addEventListener('scroll', () => { lastScrollT = now(); hoverUntil = 0; }, { passive: true });
 
-  // hover medido só no movimento do mouse
-  addEventListener('pointermove', e => {
-    if (e.pointerType !== 'mouse' || scrolling()) return;
-    const r = wrap.getBoundingClientRect();
-    const nx = (e.clientX - (r.left + r.width / 2)) / (r.width * 0.3);
-    const ny = (e.clientY - (r.top + r.height * 0.45)) / (r.height * 0.4);
-    hoverUntil = nx * nx + ny * ny < 1 ? now() + 260 : 0;
-  }, { passive: true });
 
   function draw() {
     if (vid.readyState < 2) return;
@@ -94,7 +86,7 @@
     if (tf !== lastTf) { wrap.style.transform = tf; lastTf = tf; }   // só escreve quando muda
 
     if (auto > 0) auto--;
-    const g = !scrolling() && (now() < hoverUntil || auto > 0);
+    const g = !scrolling() && auto > 0;   // só os surtos automáticos
     if (g !== glitching) setGlitch(g);
 
     if (g && ++f % (reduce ? 4 : 2) === 0) {        // glitch a ~30 fps
@@ -116,8 +108,6 @@
       spasm();
     }, rnd(4000, 9000));
   })();
-  $$('.hero__title, .bebas-xl, .giant, .budget__title').forEach(el =>
-    el.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse' && !scrolling()) auto = 12; }));
 
   /* ---------- lâmpada falhando ---------- */
   function flicker() {
