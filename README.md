@@ -12,6 +12,11 @@ grão animado, cursor customizado, parallax leve nas fotos, "REVEAL" correndo co
 linha do processo que acende conforme rola, carrossel de depoimentos e hover nos trabalhos.
 Respeita `prefers-reduced-motion`.
 
+## Terror
+Caveira original (flash de tattoo) que infla e murcha com o scroll como boneco inflável, abre a boca na rolagem rápida,
+segue o mouse com os olhos e range os dentes no hover (clique = grito). Lâmpada falhando, scanlines, vinheta,
+tinta borrada nos títulos, glitch, sangue escorrendo e fitas de aviso. Arquivos: `horror.css` e `skull.js`.
+
 ## Para finalizar
 - **Fotos e vídeos:** os blocos `.ph` são placeholders com legenda `[ ... ]`. Trocar por `<img>`/`<video>` reais.
 - **WhatsApp:** preencher `WHATSAPP` no topo de `main.js` (só dígitos, com 55 + DDD).

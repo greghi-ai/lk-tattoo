@@ -10,12 +10,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=2">
+<link rel="stylesheet" href="style.css?v=4">
+<link rel="stylesheet" href="horror.css?v=4">
 </head>
 <body class="is-loading">
 
 <!-- SVG sprite: logo LK (exportado do Figma) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="bleed" x="-3%" y="-10%" width="106%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="5" xChannelSelector="R" yChannelSelector="G"/></filter>
   <symbol id="lk-full" viewBox="0 0 410 465">
     <path d="M156.127 287.003C156.007 283.418 156.283 279.787 156.145 276.201C155.612 262.246 155.41 248.181 155.575 234.143C155.695 224.325 157.386 211.721 156.587 202.17C156.118 196.617 154.04 191.533 150.363 187.369C149.131 185.972 141.758 180.208 141.942 179.509C150.363 173.294 156.348 167.383 157.175 156.37C158.011 145.2 156.991 132.532 157.157 121.133C157.515 97.0932 159.804 69.7622 158.223 45.989C157.543 35.8215 153.525 23.2546 146.162 16.0013C143.008 12.894 136.206 10.0166 133.861 7.39657C132.528 5.90729 136.546 3.04826 137.787 2.41394C147.283 -2.44 167.664 1.23722 176.057 7.66316C178.052 9.18921 179.468 11.2668 181.095 13.1238C186.602 4.95121 197.054 1.83476 206.404 0.593702C214.264 -0.445113 223.852 -0.89557 229.184 6.05438C229.432 7.07481 228.899 6.70709 228.531 6.96449C225.672 9.00535 222.179 10.5957 219.467 12.609C207.737 21.2873 204.069 36.8051 203.407 50.6958C202.065 79.2035 204.97 109.035 203.453 137.478C203.26 141.1 200.621 155.69 201.587 157.694C201.917 158.374 203.094 158.87 203.784 159.211L263.621 89.3618C269.67 80.371 279.718 74.1473 277.935 61.893C277.199 56.8736 273.862 54.0513 269.661 51.7714V43.1024H371.116C373 52.6907 363.292 54.3639 356.967 58.1238C346.322 64.4486 337.395 73.2004 328.8 81.989L258.216 163.724L317.814 253.835C321.142 257.236 324.819 261.529 329.324 263.35C331.319 264.158 334.794 264.342 336.182 265.427C336.862 265.951 340.245 270.594 339.059 271.467L316.233 286.976L232.503 160.562L317.502 61.4885L311.958 61.9849C292.469 83.0002 273.531 104.53 254.686 126.134C230.572 153.778 207.369 182.35 182.419 209.193L182.952 33.4037L179.257 33.1003L176.103 286.994H156.127V287.003Z"/>
     <path d="M29.971 328.004C44.5236 323.665 52.0436 307.255 53.0916 293.043C55.3347 262.688 51.4644 229.639 53.0548 199.007C51.5563 190.007 44.2478 185.31 38.3827 179.261C45.5349 174.774 51.7494 168.174 53.0456 159.486C50.0119 130.666 61.4848 85.0778 41.8117 61.5068C36.5349 55.182 31.2489 52.9389 24.8413 48.5262C23.2233 47.4139 26.11 44.9869 27.1764 44.2515C36.2499 38.0278 57.0354 41.944 66.6053 46.1728C71.2386 48.2229 74.686 50.9072 78.5287 54.1064C88.0252 43.1023 105.437 38.6989 119.594 39.9583C121.883 40.1606 131.609 42.3117 131.352 45.373C131.196 47.2392 121.791 52.6447 119.585 54.6488C109.519 63.7959 105.823 77.3832 105.124 90.6488C104.122 109.66 104.904 131.521 105.694 150.569C106.062 159.321 104.609 163.724 110.714 171.309C113.416 174.673 117.452 176.595 119.842 179.968C113.655 184.74 106.705 190.66 105.731 199.007C104.352 210.857 105.841 227.028 105.694 239.448C105.492 256.556 104.058 274.344 105.124 291.489C105.216 292.988 105.805 294.413 105.676 295.93L214.246 295.957C226.767 295.268 239.159 291.296 244.905 279.309C245.456 278.159 246.936 273.14 247.194 272.919C247.911 272.303 251.487 272.074 252.489 272.377C254.686 273.048 256.01 281.395 256.377 283.73C258.244 295.516 259.135 309.94 251.312 319.776C262.546 330.955 262.941 350.279 259.108 364.74L252.939 364.703C249.317 353.91 240.942 345.829 230.389 341.785C224.101 339.376 218.557 340.902 215.248 334.32C214.77 333.364 212.904 328.418 212.904 327.728V320.107L229.727 319.059V315.897L77.8117 314.316C78.9792 308.074 81.0017 300.875 81.4797 294.597C83.4103 269.5 82.5369 240.183 82.5645 214.681C82.6104 170.932 79.8525 125.729 80.9465 82.2188C80.9833 80.8398 82.5185 74.0186 80.7259 73.6968L76.7545 74.0829C75.6973 113.677 76.4327 153.483 76.2581 193.17C76.1385 220.059 75.7984 247.151 75.6789 274.124C75.6421 281.506 76.2489 289.237 75.6973 296.693C75.1457 304.167 72.5073 311.576 71.064 318.894L71.7626 320.089H146.668C146.282 325.605 146.171 331.24 142.687 335.818C139.203 340.396 137.327 338.521 132.759 338.457C98.5144 337.96 64.2152 338.88 29.971 338.484V327.967V328.004Z"/>
@@ -41,10 +43,12 @@
 <!-- Loader -->
 <div class="loader" aria-hidden="true">
   <svg class="loader__sym"><use href="#lk-sym"/></svg>
-  <span class="loader__txt">mais que tatuagem.</span>
+  <span class="loader__txt">ligando a máquina</span>
 </div>
 
 <div class="grain" aria-hidden="true"></div>
+<div class="scan" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
 <div class="cursor" aria-hidden="true"><span></span></div>
 
 <!-- NAV -->
@@ -67,6 +71,7 @@
   <div class="glow glow--hero" data-speed="0.15"></div>
   <span class="micro hero__l" data-r>realismo<br>autoral<i class="tick"></i></span>
   <span class="micro hero__r" data-r><b class="dot"></b> agenda<br>aberta</span>
+  <span class="hero__vert" aria-hidden="true">SANGUE · TINTA · TEMPO</span>
   <span class="micro hero__whisper" aria-hidden="true">
     <span>A</span> <span>P</span><span>E</span><span>L</span><span>E</span><br>
     <span>L</span><span>E</span><span>M</span><span>B</span><span>R</span><span>A</span>
@@ -85,6 +90,7 @@
 
 <!-- 02 SOBRE -->
 <section class="sobre" id="sobre">
+  <div class="drips" aria-hidden="true"></div>
   <div class="glow glow--l"></div><div class="glow glow--r"></div>
   <figure class="ph sobre__ph1" data-speed="0.1" data-r><figcaption>[ retrato do Lucas ]</figcaption></figure>
   <figure class="ph sobre__ph2" data-speed="-0.12" data-r><figcaption>[ mãos · máquina · luva preta ]</figcaption></figure>
@@ -92,7 +98,7 @@
   <div class="sobre__tag" data-r><span class="micro">isso é</span><strong>REALISMO</strong><i></i></div>
   <h2 class="giant" data-split>pele<em>.</em></h2>
   <a href="#orcamento" class="seal" data-r><span>SOBRE</span><svg viewBox="0 0 100 100"><defs><path id="c" d="M50 50 m-38 0 a38 38 0 1 1 76 0 a38 38 0 1 1 -76 0"/></defs><text><textPath href="#c">mais que tatuagem · identidade · lk tattoo ·</textPath></text></svg></a>
-  <p class="sobre__bio" data-r>Sou Lucas Kaikye. Faço realismo em preto e cinza e colorido. Cada projeto começa numa conversa e termina em algo que você vai carregar pra sempre.</p>
+  <p class="sobre__bio" data-r>Sou Lucas Kaikye. Faço realismo em preto e cinza e colorido. Cada projeto começa numa conversa e termina em algo que você vai carregar pra sempre.<em class="sobre__creep">Ninguém sai daqui igual entrou.</em></p>
   <div class="btns" data-r><a href="#trabalhos" class="btn btn--red">ver trabalhos ↗</a><a href="#orcamento" class="btn">orçamento →</a></div>
 </section>
 
@@ -121,6 +127,8 @@
     <article class="work ph h-m" data-tags="cover pb" data-r><h3>COBERTURA</h3><small>preto e cinza · braço</small><figcaption>[ foto do trabalho ]</figcaption><span class="work__go">↗<em>ver projeto</em></span></article>
   </div>
 </section>
+
+<div class="tape" aria-hidden="true"><div class="tape__in"><span>SANGUE · TINTA · AGULHA · CICATRIZ · PRA SEMPRE · SANGUE · TINTA · AGULHA · CICATRIZ · PRA SEMPRE ·</span><span>SANGUE · TINTA · AGULHA · CICATRIZ · PRA SEMPRE · SANGUE · TINTA · AGULHA · CICATRIZ · PRA SEMPRE ·</span></div></div>
 
 <!-- 04 VÍDEOS -->
 <section class="videos" id="videos">
@@ -178,8 +186,11 @@
   </div>
 </section>
 
+<div class="tape tape--dark" aria-hidden="true"><div class="tape__in"><span>A PELE LEMBRA · NÃO TEM VOLTA · A PELE LEMBRA · NÃO TEM VOLTA · A PELE LEMBRA · NÃO TEM VOLTA ·</span><span>A PELE LEMBRA · NÃO TEM VOLTA · A PELE LEMBRA · NÃO TEM VOLTA · A PELE LEMBRA · NÃO TEM VOLTA ·</span></div></div>
+
 <!-- 07 ORÇAMENTO -->
 <section class="budget" id="orcamento">
+  <div class="drips" aria-hidden="true"></div>
   <div class="fire fire--big"><i></i><i></i><i></i></div>
   <div class="budget__follow"></div>
   <span class="micro label label--c">orçamento <b class="dot dot--w"></b></span>
@@ -209,6 +220,7 @@
   <a href="#topo" class="micro foot__top">voltar ao topo ↑</a>
 </footer>
 
-<script src="main.js?v=2"></script>
+<script src="main.js?v=4"></script>
+<script src="skull.js?v=4"></script>
 </body>
 </html>
