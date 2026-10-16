@@ -1,0 +1,92 @@
+/* =========================================================
+   LK — animações ligadas ao scroll (nativas do navegador, rodam fora do JS)
+   Navegadores sem suporte continuam com o reveal simples de antes.
+   ========================================================= */
+
+/* barra de progresso vermelha no topo */
+.progress{position:fixed;left:14px;right:14px;top:14px;height:2px;z-index:61;pointer-events:none;
+  background:var(--verm);transform-origin:left;transform:scaleX(0)}
+
+@supports (animation-timeline: view()) {
+
+  /* desliga o reveal antigo: o scroll comanda agora */
+  [data-r]{opacity:1;transform:none;transition:none}
+
+  .progress{animation:grow linear both;animation-timeline:scroll(root)}
+  @keyframes grow{to{transform:scaleX(1)}}
+
+  /* ---------- entra e sai pelos lados ---------- */
+  .from-l,.from-r,.from-b,.zoom{animation:linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+  .from-l{animation-name:inL}
+  .from-r{animation-name:inR}
+  .from-b{animation-name:inB}
+  .zoom{animation-name:zoomIn}
+
+  @keyframes inL{
+    0%  {opacity:0;transform:translateX(-22vw) rotate(-4deg)}
+    32% {opacity:1;transform:none}
+    72% {opacity:1;transform:none}
+    100%{opacity:.15;transform:translateX(-14vw) rotate(-2deg)}}
+  @keyframes inR{
+    0%  {opacity:0;transform:translateX(22vw) rotate(4deg)}
+    32% {opacity:1;transform:none}
+    72% {opacity:1;transform:none}
+    100%{opacity:.15;transform:translateX(14vw) rotate(2deg)}}
+  @keyframes inB{
+    0%  {opacity:0;transform:translateY(16vh) scale(.92)}
+    32% {opacity:1;transform:none}
+    80% {opacity:1;transform:none}
+    100%{opacity:.3;transform:translateY(-6vh) scale(.97)}}
+  @keyframes zoomIn{
+    0%  {opacity:0;transform:scale(.8)}
+    35% {opacity:1;transform:none}
+    100%{opacity:1;transform:none}}
+
+  /* ---------- títulos gigantes deslizam na horizontal ---------- */
+  .bebas-xl{animation:driftL linear both;animation-timeline:view();animation-range:cover}
+  .giant:not(.giant--md){animation:driftR linear both;animation-timeline:view();animation-range:cover}
+  .giant--md{animation:driftL linear both;animation-timeline:view();animation-range:cover}
+  .budget__title{animation:titleUp linear both;animation-timeline:view();animation-range:entry 0% cover 45%}
+  @keyframes driftL{from{transform:translateX(14vw)}to{transform:translateX(-14vw)}}
+  @keyframes driftR{from{transform:translateX(-12vw)}to{transform:translateX(12vw)}}
+  @keyframes titleUp{from{opacity:0;transform:translateY(12vh) scale(.82);letter-spacing:.2em}to{opacity:1;transform:none}}
+
+  /* hero: ao sair, o título vai pra esquerda e o texto pra direita */
+  .hero__title{animation:outL linear both;animation-timeline:view();animation-range:exit -20% exit 100%}
+  .hero__sub,.hero__r{animation:outR linear both;animation-timeline:view();animation-range:exit -40% exit 100%}
+  .hero__l{animation:outL linear both;animation-timeline:view();animation-range:exit -40% exit 100%}
+  @keyframes outL{to{opacity:0;transform:translateX(-30vw)}}
+  @keyframes outR{to{opacity:0;transform:translateX(30vw)}}
+
+  /* faixas giram de leve conforme passam */
+  .tape{animation:tilt linear both;animation-timeline:view();animation-range:cover}
+  .tape--dark{animation-name:tiltB}
+  @keyframes tilt{from{transform:rotate(-3.5deg) scale(1.06)}to{transform:rotate(2.5deg) scale(1.06)}}
+  @keyframes tiltB{from{transform:rotate(3deg) scale(1.06)}to{transform:rotate(-2.5deg) scale(1.06)}}
+
+  /* player abre como uma cortina */
+  .player{animation:curtain linear both;animation-timeline:view();animation-range:entry 0% cover 45%}
+  @keyframes curtain{from{clip-path:inset(18% 40% 18% 40%);opacity:.3}to{clip-path:inset(0);opacity:1}}
+
+  /* etapas do processo entram uma atrás da outra, da direita */
+  .step{animation:inR linear both;animation-timeline:view()}
+  .step:nth-child(2){animation-range:entry 0% cover 55%}
+  .step:nth-child(3){animation-range:entry 10% cover 62%}
+  .step:nth-child(4){animation-range:entry 20% cover 69%}
+  .step:nth-child(5){animation-range:entry 30% cover 76%}
+  .step:nth-child(6){animation-range:entry 40% cover 83%}
+  @keyframes stepIn{from{opacity:0;transform:translateX(18vw)}to{opacity:1;transform:none}}
+  .step{animation-name:stepIn}
+
+  /* hover dos cards não briga com o scroll */
+  .grid .work:hover{animation-play-state:running}
+}
+
+@media (max-width:760px){
+  @supports (animation-timeline: view()){
+    @keyframes inL{0%{opacity:0;transform:translateX(-40vw)}35%,75%{opacity:1;transform:none}100%{opacity:.2;transform:translateX(-20vw)}}
+    @keyframes inR{0%{opacity:0;transform:translateX(40vw)}35%,75%{opacity:1;transform:none}100%{opacity:.2;transform:translateX(20vw)}}
+    .step{animation-range:entry 0% cover 40%!important}
+  }
+}
+.bebas-xl,.giant:not(.giant--md){white-space:nowrap}

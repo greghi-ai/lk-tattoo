@@ -10,9 +10,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=8">
-<link rel="stylesheet" href="horror.css?v=8">
-<link rel="stylesheet" href="nueva.css?v=8">
+<link rel="stylesheet" href="style.css?v=9">
+<link rel="stylesheet" href="horror.css?v=9">
+<link rel="stylesheet" href="nueva.css?v=9">
+<link rel="stylesheet" href="scroll.css?v=9">
 </head>
 <body class="is-loading">
 
@@ -50,6 +51,7 @@
 <div class="grain" aria-hidden="true"></div>
 <div class="scan" aria-hidden="true"></div>
 <div class="vignette" aria-hidden="true"></div>
+<div class="progress" aria-hidden="true"></div>
 <div class="frame" aria-hidden="true"><i>+</i><i>+</i><i>+</i><i>+</i></div>
 <div class="cursor" aria-hidden="true"><span></span></div>
 
@@ -94,14 +96,14 @@
 <!-- 02 SOBRE -->
 <section class="sobre" id="sobre">
   <div class="glow glow--l"></div><div class="glow glow--r"></div>
-  <figure class="ph sobre__ph1" data-speed="0.1" data-r><img class="ph__img" src="assets/img/sobre-lucas.jpg" alt="Lucas Kaikye no estúdio, sob a luz do ring light" loading="lazy" decoding="async" width="880" height="1100"></figure>
-  <figure class="ph sobre__ph2" data-speed="-0.12" data-r><img class="ph__img" src="assets/img/sobre-maos.jpg" alt="Lucas concentrado durante uma sessão" loading="lazy" decoding="async" width="880" height="1100"></figure>
-  <div class="sobre__meta micro" data-r>01 ▸ sobre<br><br>01&nbsp; técnica<br>02&nbsp; processo<br>03&nbsp; cicatrização</div>
-  <div class="sobre__tag" data-r><span class="micro">isso é</span><strong>REALISMO</strong><i></i></div>
+  <figure class="from-l ph sobre__ph1" data-speed="0.1" data-r><img class="ph__img" src="assets/img/sobre-lucas.jpg" alt="Lucas Kaikye no estúdio, sob a luz do ring light" loading="lazy" decoding="async" width="880" height="1100"></figure>
+  <figure class="from-r ph sobre__ph2" data-speed="-0.12" data-r><img class="ph__img" src="assets/img/sobre-maos.jpg" alt="Lucas concentrado durante uma sessão" loading="lazy" decoding="async" width="880" height="1100"></figure>
+  <div class="from-l sobre__meta micro" data-r>01 ▸ sobre<br><br>01&nbsp; técnica<br>02&nbsp; processo<br>03&nbsp; cicatrização</div>
+  <div class="from-r sobre__tag" data-r><span class="micro">isso é</span><strong>REALISMO</strong><i></i></div>
   <h2 class="giant" data-split>pele<em>.</em></h2>
   <a href="#orcamento" class="seal" data-r><span>SOBRE</span><svg viewBox="0 0 100 100"><defs><path id="c" d="M50 50 m-38 0 a38 38 0 1 1 76 0 a38 38 0 1 1 -76 0"/></defs><text><textPath href="#c">mais que tatuagem · identidade · lk tattoo ·</textPath></text></svg></a>
-  <p class="sobre__bio" data-r>Sou Lucas Kaikye. Faço realismo em preto e cinza e colorido. Cada projeto começa numa conversa e termina em algo que você vai carregar pra sempre.<em class="sobre__creep">Ninguém sai daqui igual entrou.</em></p>
-  <div class="btns" data-r><a href="#trabalhos" class="btn btn--red">ver trabalhos ↗</a><a href="#orcamento" class="btn">orçamento →</a></div>
+  <p class="from-b sobre__bio" data-r>Sou Lucas Kaikye. Faço realismo em preto e cinza e colorido. Cada projeto começa numa conversa e termina em algo que você vai carregar pra sempre.<em class="sobre__creep">Ninguém sai daqui igual entrou.</em></p>
+  <div class="from-b btns" data-r><a href="#trabalhos" class="btn btn--red">ver trabalhos ↗</a><a href="#orcamento" class="btn">orçamento →</a></div>
 </section>
 
 <!-- 03 TRABALHOS -->
@@ -110,22 +112,22 @@
   <span class="micro label">02 ▸ trabalhos</span>
   <div class="works__head">
     <h2 class="bebas-xl" data-split>TRABALHOS</h2>
-    <span class="micro works__sel" data-r>selecionados<br>2024 — 2026</span>
-    <a href="https://instagram.com/kaikyetattoo" target="_blank" rel="noopener" class="u micro works__all" data-r>ver portfólio completo ↗</a>
+    <span class="from-r micro works__sel" data-r>selecionados<br>2024 — 2026</span>
+    <a href="https://instagram.com/kaikyetattoo" target="_blank" rel="noopener" class="from-r u micro works__all" data-r>ver portfólio completo ↗</a>
   </div>
-  <div class="filters" role="tablist" data-r>
+  <div class="from-l filters" role="tablist" data-r>
     <button class="is-on" data-f="all">todos</button>
     <button data-f="retrato">retrato</button>
     <button data-f="pb">preto e cinza</button>
     <button data-f="processo">processo</button>
   </div>
   <div class="grid">
-    <article class="work ph h-l" data-tags="retrato pb" data-r><img class="ph__img" src="assets/img/work-familia.jpg" alt="Tatuagem realista de retrato de família na panturrilha" loading="lazy" decoding="async" width="880" height="1100"><h3>FAMÍLIA</h3><small>retrato · panturrilha</small><span class="work__go">↗<em>ver projeto</em></span></article>
-    <article class="work ph h-s" data-tags="pb" data-r><img class="ph__img" src="assets/img/work-relogio.jpg" alt="Agulha finalizando tatuagem realista de relógio" loading="lazy" decoding="async" width="880" height="1100"><h3>RELÓGIO</h3><small>preto e cinza · braço</small><span class="work__go">↗<em>ver projeto</em></span></article>
-    <article class="work ph h-m" data-tags="retrato pb" data-r><img class="ph__img" src="assets/img/work-sorriso.jpg" alt="Detalhe de retrato realista recém tatuado" loading="lazy" decoding="async" width="880" height="1100"><h3>SORRISO</h3><small>retrato · preto e cinza</small><span class="work__go">↗<em>ver projeto</em></span></article>
-    <article class="work ph h-s" data-tags="retrato processo" data-r><img class="ph__img" src="assets/img/work-memoria.jpg" alt="Mãos de luva tatuando um retrato" loading="lazy" decoding="async" width="880" height="1100"><h3>MEMÓRIA</h3><small>retrato · em sessão</small><span class="work__go">↗<em>ver projeto</em></span></article>
-    <article class="work ph h-l" data-tags="processo" data-r><img class="ph__img" src="assets/img/work-stencil.jpg" alt="Cliente vendo o stencil do retrato no braço" loading="lazy" decoding="async" width="880" height="1100"><h3>STENCIL</h3><small>retrato · antebraço</small><span class="work__go">↗<em>ver projeto</em></span></article>
-    <article class="work ph h-m" data-tags="processo pb" data-r><img class="ph__img" src="assets/img/work-sessao.jpg" alt="Sessão de tatuagem realista em andamento" loading="lazy" decoding="async" width="880" height="1100"><h3>SESSÃO</h3><small>realismo · em andamento</small><span class="work__go">↗<em>ver projeto</em></span></article>
+    <article class="work from-l ph h-l" data-tags="retrato pb" data-r><img class="ph__img" src="assets/img/work-familia.jpg" alt="Tatuagem realista de retrato de família na panturrilha" loading="lazy" decoding="async" width="880" height="1100"><h3>FAMÍLIA</h3><small>retrato · panturrilha</small><span class="work__go">↗<em>ver projeto</em></span></article>
+    <article class="work from-l ph h-s" data-tags="pb" data-r><img class="ph__img" src="assets/img/work-relogio.jpg" alt="Agulha finalizando tatuagem realista de relógio" loading="lazy" decoding="async" width="880" height="1100"><h3>RELÓGIO</h3><small>preto e cinza · braço</small><span class="work__go">↗<em>ver projeto</em></span></article>
+    <article class="work from-b ph h-m" data-tags="retrato pb" data-r><img class="ph__img" src="assets/img/work-sorriso.jpg" alt="Detalhe de retrato realista recém tatuado" loading="lazy" decoding="async" width="880" height="1100"><h3>SORRISO</h3><small>retrato · preto e cinza</small><span class="work__go">↗<em>ver projeto</em></span></article>
+    <article class="work from-b ph h-s" data-tags="retrato processo" data-r><img class="ph__img" src="assets/img/work-memoria.jpg" alt="Mãos de luva tatuando um retrato" loading="lazy" decoding="async" width="880" height="1100"><h3>MEMÓRIA</h3><small>retrato · em sessão</small><span class="work__go">↗<em>ver projeto</em></span></article>
+    <article class="work from-r ph h-l" data-tags="processo" data-r><img class="ph__img" src="assets/img/work-stencil.jpg" alt="Cliente vendo o stencil do retrato no braço" loading="lazy" decoding="async" width="880" height="1100"><h3>STENCIL</h3><small>retrato · antebraço</small><span class="work__go">↗<em>ver projeto</em></span></article>
+    <article class="work from-r ph h-m" data-tags="processo pb" data-r><img class="ph__img" src="assets/img/work-sessao.jpg" alt="Sessão de tatuagem realista em andamento" loading="lazy" decoding="async" width="880" height="1100"><h3>SESSÃO</h3><small>realismo · em andamento</small><span class="work__go">↗<em>ver projeto</em></span></article>
   </div>
 </section>
 
@@ -136,7 +138,7 @@
   <div class="fire"><i></i><i></i><i></i></div>
   <span class="micro label">03 ▸ vídeos</span>
   <div class="marquee" aria-hidden="true"><span>REVEAL&nbsp;REVEAL&nbsp;REVEAL&nbsp;REVEAL&nbsp;</span></div>
-  <div class="videos__side" data-r>
+  <div class="from-l videos__side" data-r>
     <span class="micro">assista <b class="play-ico"></b></span>
     <p>o processo inteiro,<br>do stencil ao reveal.</p>
   </div>
@@ -146,12 +148,12 @@
     <div class="player__bar"><i></i></div>
     <span class="player__time">00:14 / 00:30</span>
   </figure>
-  <div class="next" data-r>
+  <div class="from-r next" data-r>
     <span class="micro">próximos</span>
     <div class="ph thumb"><img class="ph__img" src="assets/img/thumb-desenho.jpg" alt="Lucas desenhando à mão no braço do cliente" loading="lazy" decoding="async" width="880" height="1100"><h4>DESENHO</h4></div>
     <div class="ph thumb"><img class="ph__img" src="assets/img/thumb-referencia.jpg" alt="Foto de referência do cliente" loading="lazy" decoding="async" width="880" height="1100"><h4>REFERÊNCIA</h4></div>
   </div>
-  <div class="videos__stat" data-r><strong data-count="14">0</strong><span>h</span><p class="micro">de sessão neste<br>projeto</p></div>
+  <div class="from-l videos__stat" data-r><strong data-count="14">0</strong><span>h</span><p class="micro">de sessão neste<br>projeto</p></div>
   <a href="#processo" class="ring" aria-label="Ver processo">↗</a>
 </section>
 
@@ -168,19 +170,19 @@
     <div class="step"><figure class="ph step__ph"><img class="ph__img" src="assets/img/step-sessao.jpg" alt="Agulha trabalhando um retrato" loading="lazy" decoding="async" width="880" height="1100"></figure><b></b><em>04 —</em><h3>SESSÃO</h3><p>Realismo leva tempo. Sessões planejadas, com pausas e conforto.</p></div>
     <div class="step"><figure class="ph step__ph"><img class="ph__img" src="assets/img/step-resultado.jpg" alt="Tatuagem de retratos finalizada na perna" loading="lazy" decoding="async" width="880" height="1100"></figure><b></b><em>05 —</em><h3>RESULTADO</h3><p>Guia de cuidados e acompanhamento até a pele fechar. Depois, o reveal.</p></div>
   </div>
-  <a href="#orcamento" class="cta-ring" data-r><span class="micro">agendar uma conversa</span><span class="ring ring--red">↗</span></a>
+  <a href="#orcamento" class="from-r cta-ring" data-r><span class="micro">agendar uma conversa</span><span class="ring ring--red">↗</span></a>
 </section>
 
 <!-- 06 DEPOIMENTOS -->
 <section class="quotes" id="clientes">
   <div class="glow glow--q"></div>
   <span class="micro label">05 ▸ clientes</span>
-  <div class="quotes__stage">
+  <div class="from-l quotes__stage">
     <blockquote class="quote is-on"><p>“Sentei sem saber o que esperar e saí com a melhor tattoo que tenho. O Lucas ouviu a história antes de pegar a máquina.”</p><cite><i></i><span><b>[ Nome do cliente ]</b>[ projeto ] · nota 5,0</span></cite></blockquote>
     <blockquote class="quote"><p>“Doze horas de sessão que passaram rápido. O resultado parece foto, mesmo depois de cicatrizado.”</p><cite><i></i><span><b>[ Nome do cliente ]</b>[ projeto ] · nota 5,0</span></cite></blockquote>
     <blockquote class="quote"><p>“Cobriu uma tattoo antiga que eu escondia há anos. Hoje é a parte do meu corpo que eu mais gosto.”</p><cite><i></i><span><b>[ Nome do cliente ]</b>[ projeto ] · nota 5,0</span></cite></blockquote>
   </div>
-  <div class="quotes__nav">
+  <div class="from-r quotes__nav">
     <strong class="quotes__n">01</strong><span>/ 03</span>
     <div><button data-q="-1" aria-label="Anterior">←</button><button data-q="1" aria-label="Próximo">→</button></div>
     <div class="quotes__dots"><i class="is-on"></i><i></i><i></i></div>
@@ -195,9 +197,9 @@
   <div class="budget__follow"></div>
   <span class="micro label label--c">06 ▸ orçamento</span>
   <h2 class="budget__title" data-split>SUA HISTÓRIA<br>NA PELE<em>.</em></h2>
-  <div class="budget__aside micro" data-r>ou chama direto<br><a href="https://instagram.com/kaikyetattoo" target="_blank" rel="noopener">@kaikyetattoo</a><br>[ whatsapp ]</div>
-  <div class="budget__agenda micro" data-r><b class="dot"></b> agenda<br>[ mês ] aberta</div>
-  <form class="form" data-r>
+  <div class="from-l budget__aside micro" data-r>ou chama direto<br><a href="https://instagram.com/kaikyetattoo" target="_blank" rel="noopener">@kaikyetattoo</a><br>[ whatsapp ]</div>
+  <div class="from-r budget__agenda micro" data-r><b class="dot"></b> agenda<br>[ mês ] aberta</div>
+  <form class="from-b form" data-r>
     <label class="f f--half"><span>Nome</span><input name="nome" placeholder="Como você se chama?" required></label>
     <label class="f f--half"><span>WhatsApp</span><input name="whats" placeholder="(00) 00000-0000" inputmode="tel"></label>
     <label class="f"><span>Sua ideia</span><textarea name="ideia" rows="2" placeholder="Conte a história, o estilo e o que não pode faltar." required></textarea></label>
@@ -220,7 +222,7 @@
   <a href="#topo" class="micro foot__top">voltar ao topo ↑</a>
 </footer>
 
-<script src="main.js?v=8"></script>
-<script src="video-skull.js?v=8"></script>
+<script src="main.js?v=9"></script>
+<script src="video-skull.js?v=9"></script>
 </body>
 </html>
