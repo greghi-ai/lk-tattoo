@@ -1,0 +1,74 @@
+/* =========================================================
+   LK — botões de modo no topo + modos Preto & cinza e Colorido
+   ========================================================= */
+
+/* ---------- botões ---------- */
+.nav__pills{gap:6px}
+.nav__pills .pill{font:inherit;letter-spacing:inherit;text-transform:inherit;color:var(--osso);cursor:pointer;
+  padding:6px 14px;border:1px solid transparent;background:transparent;transition:background .35s,border-color .35s,color .35s}
+.nav__pills .pill:hover{border-color:rgba(234,230,223,.35)}
+.nav__pills .pill.is-on{background:var(--verm);border-color:var(--verm)}
+.nav__pills .s{display:none}
+html.mode-pb .nav__pills .pill.is-on{background:var(--osso);border-color:var(--osso);color:#080808}
+html.mode-color .nav__pills .pill.is-on{border-color:transparent;color:#fff;
+  background:linear-gradient(90deg,#ff2d55,#ff9f0a,#ffd60a,#30d158,#0a84ff,#bf5af2,#ff2d55) 0 0/300% 100%;animation:lkflow 6s linear infinite}
+
+/* troca suave entre modos */
+html.mode-switching main,html.mode-switching .foot,html.mode-switching .nav,html.mode-switching .logo3d,html.mode-switching .social,html.mode-switching .progress{
+  transition:filter .6s ease}
+
+/* =========================================================
+   PRETO & CINZA — o site inteiro sem cor
+   ========================================================= */
+html.mode-pb main,html.mode-pb .foot,html.mode-pb .nav,html.mode-pb .logo3d,html.mode-pb .social,
+html.mode-pb .progress,html.mode-pb .cursor,html.mode-pb .loader{filter:grayscale(1)}
+html.mode-pb .logo3d{filter:grayscale(1) contrast(1.15) brightness(1.25)}
+
+/* =========================================================
+   COLORIDO — gradientes de cor em movimento
+   ========================================================= */
+@keyframes lkflow{to{background-position:300% 0}}
+@keyframes lkhue{to{filter:hue-rotate(360deg) saturate(1.4)}}
+html.mode-color{--grad:linear-gradient(90deg,#ff2d55,#ff9f0a,#ffd60a,#30d158,#0a84ff,#bf5af2,#ff2d55)}
+
+/* logo 3D e brilhos passeiam pelas cores */
+html.mode-color .logo3d__cv{animation:lkhue 9s linear infinite}
+html.mode-color .logo3d__glow,html.mode-color .glow,html.mode-color .fire{animation:lkhue 9s linear infinite!important}
+
+/* títulos grandes com gradiente correndo dentro das letras */
+html.mode-color :is(.giant,.bebas-xl,.budget__title,.sobre__tag strong,.step h3,.quotes__n){
+  background:var(--grad) 0 0/300% 100%;-webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;animation:lkflow 8s linear infinite}
+html.mode-color :is(.giant,.bebas-xl,.budget__title) :is(em,.ch){color:transparent;-webkit-text-fill-color:transparent}
+
+/* botões, selo, pontos e traços */
+html.mode-color :is(.btn--red,.filters button.is-on,.sizes input:checked+i,.submit,.seal,.social a,.progress,.tick,.steps__line i,.quotes__dots i.is-on,.pill--red){
+  background:var(--grad) 0 0/300% 100%!important;border-color:transparent!important;animation:lkflow 6s linear infinite}
+html.mode-color .seal svg{animation:spin 18s linear infinite}
+html.mode-color :is(.dot,.step.is-lit b){background:#ffd60a;box-shadow:0 0 14px #ff2d55}
+html.mode-color :is(.step em,.label::first-letter){color:#ff9f0a}
+html.mode-color .cursor span{background:#0a84ff}
+
+/* fotos ganham tons de cor (cada uma um tom) */
+html.mode-color .ph__img{filter:sepia(.9) saturate(3.2) hue-rotate(var(--hue,300deg)) brightness(.85)!important}
+html.mode-color .grid .work:nth-child(6n+1){--hue:300deg}
+html.mode-color .grid .work:nth-child(6n+2){--hue:200deg}
+html.mode-color .grid .work:nth-child(6n+3){--hue:20deg}
+html.mode-color .grid .work:nth-child(6n+4){--hue:120deg}
+html.mode-color .grid .work:nth-child(6n+5){--hue:250deg}
+html.mode-color .grid .work:nth-child(6n+6){--hue:340deg}
+html.mode-color .step:nth-child(odd) .step__ph{--hue:180deg}
+html.mode-color .step:nth-child(even) .step__ph{--hue:280deg}
+html.mode-color .sobre__ph2{--hue:30deg}
+html.mode-color .thumb:nth-child(odd){--hue:150deg}
+
+/* ---------- celular: botões compactos no topo ---------- */
+@media (max-width:760px){
+  .nav__pills{display:flex!important;gap:4px;font-size:9px;letter-spacing:.08em;margin:0 auto 0 12px}
+  .nav__pills .pill{padding:6px 9px}
+  .nav__pills .l{display:none}
+  .nav__pills .s{display:inline}
+}
+@media (prefers-reduced-motion:reduce){
+  html.mode-color *{animation-duration:30s!important}
+}

@@ -10,11 +10,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
-<link rel="stylesheet" href="clean.css?v=13">
-<link rel="stylesheet" href="scroll.css?v=13">
-<link rel="stylesheet" href="mobile.css?v=13">
-<link rel="stylesheet" href="entrance.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
+<link rel="stylesheet" href="clean.css?v=14">
+<link rel="stylesheet" href="scroll.css?v=14">
+<link rel="stylesheet" href="mobile.css?v=14">
+<link rel="stylesheet" href="entrance.css?v=14">
+<link rel="stylesheet" href="modes.css?v=14">
 </head>
 <body class="is-loading">
 
@@ -56,7 +57,11 @@
 <!-- NAV -->
 <header class="nav">
   <a href="#topo" class="nav__logo" aria-label="LK Tattoo — início"><svg><use href="#lk-sym"/></svg></a>
-  <div class="nav__pills"><span class="pill pill--red">Realismo</span><span class="pill">Preto &amp; cinza</span></div>
+  <div class="nav__pills" role="radiogroup" aria-label="Modo de cor do site">
+    <button class="pill is-on" data-mode="real" role="radio" aria-checked="true"><span class="l">Realismo</span><span class="s">Real</span></button>
+    <button class="pill" data-mode="pb" role="radio" aria-checked="false"><span class="l">Preto &amp; cinza</span><span class="s">P&amp;B</span></button>
+    <button class="pill" data-mode="color" role="radio" aria-checked="false"><span class="l">Colorido</span><span class="s">Cor</span></button>
+  </div>
   <nav class="nav__links">
     <a href="#trabalhos">trabalhos</a><a href="#processo">processo</a><a href="#orcamento" class="u">orçamento</a>
   </nav>
@@ -211,8 +216,9 @@
   <a href="#topo" class="micro foot__top">voltar ao topo ↑</a>
 </footer>
 
-<script src="main.js?v=13"></script>
-<script src="logo3d.js?v=13"></script>
-<script src="entrance.js?v=13"></script>
+<script src="main.js?v=14"></script>
+<script src="logo3d.js?v=14"></script>
+<script src="entrance.js?v=14"></script>
+<script src="modes.js?v=14"></script>
 </body>
 </html>
