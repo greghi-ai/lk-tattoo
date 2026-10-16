@@ -7,9 +7,10 @@
 /* ---------- caveira em vídeo (fundo) ---------- */
 main,.foot{position:relative;z-index:2}
 .vskull{position:fixed;left:50%;top:50%;z-index:0;width:min(96vh,100vw);aspect-ratio:1;pointer-events:none;
-  mix-blend-mode:screen;opacity:0;transition:opacity 1.6s;will-change:transform;
-  -webkit-mask:radial-gradient(circle at 50% 48%,#000 48%,transparent 70%);mask:radial-gradient(circle at 50% 48%,#000 48%,transparent 70%)}
-.vskull canvas{width:100%;height:100%;display:block}
+  opacity:0;transition:opacity 1.6s;will-change:transform;contain:strict}
+.vskull video,.vskull canvas{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover}
+.vskull canvas{opacity:0}
+.vskull.is-glitch canvas{opacity:1}
 body.ready .vskull{opacity:.82}
 .vskull.is-glitch{opacity:1;transition:none}
 body.flicker .vskull{opacity:.15}
@@ -121,3 +122,13 @@ main>section{border-bottom:1px solid var(--line)}
   .tape span{font-size:44px}
 }
 .tape b{font-weight:400}
+
+/* ---------- performance ---------- */
+.grain{animation:none;inset:0}
+.glow{filter:none!important;animation:none!important;background:radial-gradient(circle,rgba(158,16,21,.9),transparent 65%)!important}
+.fire i{filter:none!important;animation:none!important;background:radial-gradient(closest-side,rgba(210,31,38,.8),transparent)!important}
+.ph__light,.marquee{will-change:auto}
+body.skull-glitch main{transform:none}
+.hero__whisper span{animation-duration:7s}
+/* fundo em preto puro para casar com o preto do vídeo (sem "quadrado") */
+html,body{background:#000}

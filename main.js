@@ -101,7 +101,7 @@
   function frame() {
     const y = scrollY;
     // garantia: revela o que já passou da tela mesmo em rolagem muito rápida
-    if (++fc % 15 === 0) pending().forEach(el => {
+    if (++fc % 40 === 0) pending().forEach(el => {
       if (el.getBoundingClientRect().top < innerHeight * 0.9) { el.classList.add('in'); const c = el.querySelector('[data-count]'); if (c) countUp(c); }
     });
     nav.classList.toggle('is-scrolled', y > 40);
