@@ -1,0 +1,39 @@
+/* =========================================================
+   LK — identidade clean (conceito v1) + fotos + logo 3D
+   ========================================================= */
+
+/* ---------- logo 3D de fundo ---------- */
+main,.foot{position:relative;z-index:2}
+.logo3d{position:fixed;left:50%;top:50%;z-index:1;width:min(46vh,62vw);aspect-ratio:410/465;
+  pointer-events:none;opacity:0;will-change:transform,opacity}
+.logo3d__cv{position:absolute;left:-22%;top:-22%;width:144%;height:144%;display:block}
+.logo3d__glow{position:absolute;inset:-45% -45% -35%;
+  background:radial-gradient(closest-side,rgba(210,31,38,.42),rgba(158,16,21,.16) 45%,transparent 72%);
+  animation:breathe 7s ease-in-out infinite}
+/* o hero agora é a própria logo: tira o glow antigo que ficaria duplicado */
+.glow--hero{display:none}
+.hero__nav{bottom:84px}
+
+/* ---------- fotos ---------- */
+.ph__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;
+  transition:transform 1.2s var(--ease),filter .6s}
+.ph::before,.ph::after{z-index:1}
+.ph:has(.ph__img){background:#000}
+.work:hover .ph__img,.thumb:hover .ph__img,.player:hover .ph__img{transform:scale(1.05)}
+.work .ph__img{filter:brightness(.82)}
+.work:hover .ph__img{filter:brightness(.6)}
+.player .ph__img{filter:brightness(.62)}
+.thumb .ph__img{filter:brightness(.55)}
+.sobre__ph1 .ph__img,.sobre__ph2 .ph__img{filter:brightness(.8)}
+
+/* processo com foto em cada etapa */
+.steps{--ph-h:230px;margin-top:110px;align-items:start}
+.steps__line{top:calc(var(--ph-h) + 21px)}
+.step__ph{height:var(--ph-h);margin-bottom:16px}
+.step__ph .ph__img{filter:grayscale(1) brightness(.55)}
+.step.is-lit .step__ph .ph__img{filter:brightness(.85)}
+@media (max-width:1100px){.steps{--ph-h:200px}}
+@media (max-width:760px){
+  .steps{--ph-h:260px}
+  .logo3d{width:74vw}
+}

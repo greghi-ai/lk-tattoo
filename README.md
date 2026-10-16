@@ -12,13 +12,14 @@ grão animado, cursor customizado, parallax leve nas fotos, "REVEAL" correndo co
 linha do processo que acende conforme rola, carrossel de depoimentos e hover nos trabalhos.
 Respeita `prefers-reduced-motion`.
 
-## Terror
-Fundo: caveira 3D em vídeo (`assets/skull.mp4` / `.webm`) desenhada num canvas — desce e cresce com o scroll,
-respira como inflável e entra em glitch pesado (canais deslocados, fatias, apagões, barras na tela) quando o
-cursor passa por cima. Surtos aleatórios, lâmpada falhando, scanlines. Arquivos: `video-skull.js`, `nueva.css`.
+## Logo 3D
+A logo LK é extrudada em 3D num único canvas (`logo3d.js`, imagens em `assets/lk-*.png`): fica no fundo,
+desce acompanhando o scroll, cresce até o fim da página, respira como inflável, gira com a rolagem e inclina
+seguindo o mouse. Só redesenha quando o ângulo muda (leve).
 
-> ⚠️ O vídeo da caveira é obra de terceiro (@iskxart). Antes de publicar no site oficial, obter autorização/licença
-> do artista ou trocar pelo vídeo próprio — basta substituir os arquivos em `assets/`.
+## Identidade
+Versão clean (conceito v1 do Figma): preto, vermelho LK como acento, títulos grandes, fotos em P&B. Estilos em
+`style.css` + `clean.css`; animações de scroll em `scroll.css`.
 
 ## Para finalizar
 - **Fotos e vídeos:** os blocos `.ph` são placeholders com legenda `[ ... ]`. Trocar por `<img>`/`<video>` reais.
