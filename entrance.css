@@ -1,0 +1,30 @@
+/* =========================================================
+   LK — entradas no scroll (entrance.js marca os elementos)
+   ========================================================= */
+.ent [data-ent]{transition-delay:var(--ed,0s)!important}
+
+/* sobe e aparece */
+.ent [data-ent="up"]{opacity:0;translate:0 28px;filter:blur(4px);
+  transition:opacity .9s var(--ease),translate .9s var(--ease),filter .9s var(--ease)}
+.ent [data-ent="up"].ent-on{opacity:1;translate:0 0;filter:none}
+
+/* fotos: cortina de baixo pra cima + imagem desinflando o zoom */
+.ent [data-ent="wipe"]{clip-path:inset(100% 0 0 0);transition:clip-path 1.25s cubic-bezier(.7,0,.2,1)}
+.ent [data-ent="wipe"].ent-on{clip-path:inset(0 0 0 0)}
+.ent [data-ent="wipe"] .ph__img{scale:1.28;transition:scale 1.6s var(--ease),transform 1.2s var(--ease),filter .6s}
+.ent [data-ent="wipe"].ent-on .ph__img{scale:1}
+/* faixa vermelha que passa por cima da foto enquanto ela abre */
+.ent [data-ent="wipe"]>.ph__img+*::selection{background:none}
+.ent [data-ent="wipe"]::after{transition:opacity .6s}
+
+/* traços crescendo */
+.ent [data-ent="line"]{transform-origin:left;scale:0 1;transition:scale 1.1s var(--ease)}
+.ent [data-ent="line"].ent-on{scale:1 1}
+
+/* selo */
+.ent [data-ent="pop"]{opacity:0;scale:.4;rotate:-90deg;transition:opacity .8s var(--ease),scale 1s cubic-bezier(.3,1.6,.5,1),rotate 1s var(--ease)}
+.ent [data-ent="pop"].ent-on{opacity:1;scale:1;rotate:0deg}
+
+@media (prefers-reduced-motion:reduce){
+  .ent [data-ent]{transition-duration:.01s!important;filter:none!important}
+}
